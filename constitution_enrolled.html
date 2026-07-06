@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constitution of the United States — Working Draft, Revision 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF6; --ink:#191B1E; --rule:#D9D5CA; --muted:#71706A;
+  --pencil:#27519E; --pencil-wash:#EFF3FB;
+  --flag:#93312B;  --flag-wash:#F9F0EE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Libre Caslon Text', Georgia, serif;
+  font-size:1.02rem; line-height:1.72;
+}
+/* ---- masthead: committee-print stamp ---- */
+header.mast{
+  border-bottom:3px double var(--ink);
+  padding:3.2rem 1.5rem 2rem; text-align:center;
+}
+.stamp{
+  font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--muted); display:flex; gap:1.4rem;
+  justify-content:center; flex-wrap:wrap; margin-bottom:2rem;
+}
+.stamp span{border:1px solid var(--rule); padding:.3rem .7rem; background:#fff}
+.stamp .rev{border-color:var(--flag); color:var(--flag)}
+header.mast h1{
+  font-size:clamp(1.9rem,5vw,3.1rem); font-weight:700; letter-spacing:.04em;
+  margin:.2rem 0 .4rem; text-transform:uppercase;
+}
+header.mast p.sub{
+  font-style:italic; color:var(--muted); margin:.2rem 0; font-size:1.05rem;
+}
+/* ---- layout ---- */
+.wrap{max-width:72rem; margin:0 auto; display:grid; grid-template-columns:14rem minmax(0,46rem); gap:3.5rem; padding:2.5rem 1.5rem 6rem; justify-content:center}
+nav.toc{position:sticky; top:1.5rem; align-self:start;
+  font-family:'IBM Plex Mono', monospace; font-size:.74rem; letter-spacing:.06em;
+  display:flex; flex-direction:column; gap:.55rem; padding-top:.4rem}
+nav.toc .head{color:var(--muted); text-transform:uppercase; letter-spacing:.2em; font-size:.62rem; margin-bottom:.3rem}
+nav.toc a{color:var(--ink); text-decoration:none; border-left:2px solid var(--rule); padding-left:.7rem}
+nav.toc a:hover, nav.toc a:focus-visible{border-left-color:var(--pencil); color:var(--pencil)}
+@media (max-width:64rem){.wrap{grid-template-columns:minmax(0,46rem)} nav.toc{position:static; flex-direction:row; flex-wrap:wrap; gap:.4rem .9rem; border-bottom:1px solid var(--rule); padding-bottom:1.2rem} nav.toc a{border-left:none; padding-left:0}}
+/* ---- document typography ---- */
+main h1{
+  font-size:1.55rem; text-transform:uppercase; letter-spacing:.06em;
+  margin:4.2rem 0 .4rem; padding-top:1.6rem; border-top:3px double var(--ink);
+}
+main h1:first-of-type{margin-top:0}
+main h2{
+  font-variant:small-caps; letter-spacing:.05em; font-size:1.16rem;
+  margin:2.6rem 0 .6rem; font-weight:700;
+}
+main h3{font-size:1rem; font-style:italic; font-weight:400; color:var(--muted); margin:0 0 1.6rem}
+main hr{display:none}
+/* committee-print paragraph numbering in the gutter */
+main{counter-reset:para}
+main p{position:relative; margin:0 0 1.05rem}
+main > p{counter-increment:para}
+main > p::before{
+  counter-increment:none; content:counter(para);
+  position:absolute; left:-3.4rem; top:.35em; width:2.4rem; text-align:right;
+  font-family:'IBM Plex Mono', monospace; font-size:.68rem; color:var(--muted);
+}
+@media (max-width:64rem){main > p::before{content:none}}
+main strong{font-weight:700}
+main a.xref{color:inherit; text-decoration:underline dotted 1px; text-decoration-color:var(--muted); text-underline-offset:3px}
+main a.xref:hover, main a.xref:focus-visible{color:var(--pencil); text-decoration-color:var(--pencil); text-decoration-style:solid}
+main h1, main h2{scroll-margin-top:1.2rem}
+/* ---- annotations ---- */
+.ann{margin:1.1rem 0 1.5rem; padding:.85rem 1.1rem .8rem; border-left:3px solid; font-size:.92rem; line-height:1.6}
+.ann p{margin:0; font-style:italic}
+.ann .tag{display:block; font-family:'IBM Plex Mono', monospace; font-style:normal;
+  font-size:.64rem; letter-spacing:.24em; text-transform:uppercase; margin-bottom:.35rem}
+.ann.note{border-color:var(--pencil); background:var(--pencil-wash)}
+.ann.note .tag{color:var(--pencil)}
+.ann.open{border-color:var(--flag); background:var(--flag-wash)}
+.ann.open .tag{color:var(--flag)}
+.ann.open .tag::after{content:" ⚑"; letter-spacing:0}
+/* conventions card (first blockquote) */
+main blockquote{
+  margin:0 0 2.5rem; padding:1rem 1.3rem; border:1px solid var(--rule); background:#fff;
+  font-size:.92rem;
+}
+main blockquote p{margin:.3rem 0}
+main blockquote code{font-family:'IBM Plex Mono',monospace; font-size:.82em; background:var(--paper); padding:.05em .3em; border:1px solid var(--rule)}
+main ul{padding-left:1.2rem}
+/* ---- tables (decisions log) ---- */
+table{border-collapse:collapse; width:100%; margin:1.2rem 0 2.2rem; font-size:.86rem; line-height:1.5; background:#fff}
+th{font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; text-align:left; color:var(--muted); border-bottom:2px solid var(--ink); padding:.5rem .7rem}
+td{border-bottom:1px solid var(--rule); padding:.55rem .7rem; vertical-align:top}
+td:first-child, th:first-child{font-family:'IBM Plex Mono',monospace; font-size:.78rem; white-space:nowrap}
+tr:hover td{background:var(--paper)}
+footer{border-top:3px double var(--ink); margin-top:4rem; padding:1.6rem 1.5rem 3rem; text-align:center;
+  font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+:focus-visible{outline:2px solid var(--pencil); outline-offset:2px}
+@media print{nav.toc{display:none}.wrap{grid-template-columns:1fr}.ann{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="stamp">
+    <span>Committee Print</span>
+    <span class="rev">Enrolled Text · Audited</span>
+    <span>July 2026</span>
+  </div>
+  <h1>Constitution of the<br>United States of America</h1>
+  <p class="sub">Working Draft — Second Constitution</p>
+</header>
+<div class="wrap">
+  <nav class="toc" aria-label="Articles">
+    <span class="head">Contents</span>
+    <a href="#top">Preamble</a>
+<a href="#a1">Article I</a>
+<a href="#a2">Article Ii</a>
+<a href="#a3">Article Iii</a>
+<a href="#a4">Article Iv</a>
+<a href="#a5">Article V</a>
+<a href="#a6">Article Vi</a>
+<a href="#a7">Article Vii</a>
+<a href="#a8">Article Viii</a>
+<a href="#a9">Article Ix</a>
+<a href="#a10">Article X</a>
+  </nav>
+  <main id="top">
+
+<hr />
+<h2>PREAMBLE</h2>
+<p>We the People of the United States, in order to form a more accountable government, secure the equal franchise of every citizen, require broad consensus in the making of our laws, restrain the concentration of power in any single branch or officer, and preserve liberty for ourselves and our posterity, do ordain and establish this Constitution for the United States of America.</p>
+<hr />
+<h1 id="a1">ARTICLE I — THE LEGISLATURE</h1>
+<h2 id="artI-s1">Section 1. Legislative Power</h2>
+<p>All legislative powers herein granted are vested in a Congress of the United States, consisting of a House of Representatives and a Senate.</p>
+<h2 id="artI-s2">Section 2. The House of Representatives</h2>
+<p><strong>(a) Apportionment.</strong> The House of Representatives shall be composed of one Representative for every 240,000 persons, or fraction thereof, in each State, as enumerated by the decennial census. The number of Representatives shall adjust automatically upon each census without further act of Congress.</p>
+<p><strong>(b) Multi-member districts.</strong> Representatives shall be elected from multi-member districts of no fewer than three and no more than seven seats, with five seats as the standard magnitude; a district of fewer than five seats may be drawn only where a State's total delegation or its geography requires it. A State entitled to fewer than three Representatives shall constitute a single at-large district. Districts shall be drawn within each State by the independent redistricting commission established under <a class="xref" href="#a4">Article IV</a> and shall be contiguous and as equal in population per seat as practicable.</p>
+<p><strong>(c) Proportional election.</strong> The Representatives of each district shall be elected on a single ranked-choice ballot by single transferable vote: a candidate reaching the quota — the number of votes divided by one more than the number of seats, plus one — is elected, and that candidate's surplus votes transfer to their next-ranked continuing candidates; if no candidate reaches quota, the candidate with the fewest continuing votes is eliminated and those ballots transfer; the count proceeds until all seats are filled, under the uniform rules of <a class="xref" href="#a4">Article IV</a>.</p>
+<p><strong>(d) Term and qualifications.</strong> Representatives shall serve terms of two years. No person shall be a Representative who has not attained the age of twenty-five years, been a citizen of the United States for seven years, and who shall not, when elected, be an inhabitant of the State in which the district lies.</p>
+<p><strong>(e) Vacancies.</strong> A vacancy shall be filled by special election within ninety days by instant-runoff count among the vacant seat only, under the rules of <a class="xref" href="#a4">Article IV</a>.</p>
+<p><strong>(f) The seat of government.</strong> The district constituting the seat of government of the United States shall be apportioned Representatives under this Section as if it were a State, its residents voting in all federal elections; its admission as a State, and with it representation in the Senate, remains a question for the process of <a class="xref" href="#artI-s3">Article I, Section 3(e)</a> and <a class="xref" href="#artV-s3">Article V, Section 3</a>.</p>
+<h2 id="artI-s3">Section 3. The Senate</h2>
+<p><strong>(a) Composition.</strong> The Senate shall be composed of two Senators from each State, elected by the people thereof by ranked-choice ballot as provided in <a class="xref" href="#a4">Article IV</a>, for terms of six years, divided into three classes so that one-third is chosen every second year.</p>
+<p><strong>(b) Qualifications.</strong> No person shall be a Senator who has not attained the age of thirty years, been a citizen of the United States for nine years, and who shall not, when elected, be an inhabitant of the State for which chosen.</p>
+<p><strong>(c) The revising function.</strong> Every bill passed by the House shall be sent to the Senate, which shall vote upon it within the period fixed by <a class="xref" href="#artI-s5">Section 5</a>. If the Senate concurs, the bill proceeds. If the Senate rejects the bill, amends it in a form the House does not accept, or fails to vote within its period, the House may, no earlier than twelve months after its first passage, pass the bill again in identical form by the affirmative vote of sixty-five percent of its membership, and the bill thereupon proceeds without the concurrence of the Senate.</p>
+<p><strong>(d) Retained powers.</strong> The advice and consent of the Senate to appointments and to treaties, and the trial of impeachments, remain the Senate's alone, at the thresholds elsewhere provided, and are not subject to subsection (c).</p>
+<p><strong>(e) The federal guarantee.</strong> No measure altering the boundary of a State, partitioning or admitting a State, or transferring to the United States a function of the government of a State shall become law without the concurrence of the Senate, notwithstanding subsection (c).</p>
+<h2 id="artI-s4">Section 4. The Consensus Threshold</h2>
+<p><strong>(a) General rule.</strong> No bill, resolution, or measure shall pass either chamber except by the affirmative vote of at least sixty percent of the members of that chamber, a quorum being present. A quorum consists of a majority of the whole membership.</p>
+<p><strong>(b) Uniformity.</strong> This threshold applies to all legislation without classification or exception, save only as provided in subsection (c).</p>
+<p><strong>(c) Emergency legislation.</strong> Upon a declaration of emergency by the President and concurrence of a simple majority of both chambers, a measure responding to the declared emergency may take effect immediately, the periods of <a class="xref" href="#artI-s6">Section 6</a> notwithstanding, but shall expire ninety days after enactment unless re-enacted under the general rule of subsection (a). A measure substantially the same as one expired under this subsection may thereafter be enacted only under subsection (a). No emergency measure may alter election law, extend any term of office, or suspend any provision of this Constitution.</p>
+<p><strong>(d) No supermajority by rule.</strong> Neither chamber may, by its own rules, require more than the threshold in subsection (a) for the passage of any measure, the confirmation of any nominee, or the conduct of any vote. Unlimited debate may not be used to prevent a vote.</p>
+<h2 id="artI-s5">Section 5. The Mandatory Docket</h2>
+<p><strong>(a) Committee deadline.</strong> Every bill referred to a committee shall be reported to the floor, favorably or unfavorably, within one hundred twenty days of referral. A bill not reported within that period is automatically discharged to the floor calendar.</p>
+<p><strong>(b) Mandatory floor vote.</strong> Every bill reported or discharged to the floor, and every re-passage or reconsideration arising under <a class="xref" href="#artI-s3">Section 3(c)</a> or <a class="xref" href="#artI-s6">Section 6(c)</a>, shall receive a recorded up-or-down vote of the full chamber within ninety days. No officer, leader, or rule of either chamber may prevent, indefinitely postpone, or substitute for this vote.</p>
+<p><strong>(c) Discharge petition.</strong> A petition signed by twenty percent of the members of a chamber shall bring any bill to an immediate floor vote, notwithstanding any committee action or leadership schedule.</p>
+<p><strong>(d) Minority participation.</strong> In the consideration of every bill, members not of the majority party shall be guaranteed the right to offer amendments and debate time in proportion to their share of the chamber, under uniform rules. Every offered amendment meeting a germaneness standard set by chamber rule shall receive a recorded vote.</p>
+<p><strong>(e) Appropriations continuity.</strong> If any appropriation lapses without a successor enacted, the prior year's appropriation continues automatically at the same level until superseded. No lapse in appropriations shall interrupt the operations of the government. During any period of automatic continuation, the salaries of Members of Congress shall be withheld and placed in escrow, payable only upon enactment of the successor appropriation.</p>
+<p><strong>(f) Compensation.</strong> Members of Congress shall receive compensation fixed by law, but no law varying that compensation shall take effect until an election of Representatives has intervened.</p>
+<p><strong>(g) Nominations.</strong> Every nomination requiring the consent of the Senate shall receive a recorded vote within one hundred twenty days of its submission; a nomination not voted upon within that period is confirmed.</p>
+<h2 id="artI-s6">Section 6. Presentment and the Suspensive Veto</h2>
+<p><strong>(a) Presentment.</strong> Every bill that has passed under this Article shall be presented to the President. If the President signs it, or takes no action within ten days, it becomes law.</p>
+<p><strong>(b) Return.</strong> The President may, within ten days, return a bill with written objections, which shall be published.</p>
+<p><strong>(c) Reconsideration.</strong> No earlier than sixty days after a bill's return, either chamber may take it up again; if both chambers re-pass it in identical form by the threshold of <a class="xref" href="#artI-s4">Section 4(a)</a>, it becomes law notwithstanding the objections.</p>
+<p><strong>(d) Exemption.</strong> A bill enacted under <a class="xref" href="#artI-s3">Section 3(c)</a> becomes law upon its final passage by the House and is not subject to return under this Section.</p>
+<h2 id="artI-s7">Section 7. Structure of a Large House</h2>
+<p><strong>(a) Committees.</strong> The House shall organize its work through standing committees. Seats on every committee shall be allocated in proportion to party strength in the chamber. Each committee shall elect its own chair from among its members by secret ballot.</p>
+<p><strong>(b) Floor debate.</strong> Debate time on the floor shall be allocated among party caucuses and recognized member blocs in proportion to their numbers. Each caucus or bloc designates its own speakers.</p>
+<p><strong>(c) Remote participation.</strong> The House may by rule provide for secure remote deliberation and voting, provided every recorded vote is public and verifiable.</p>
+<h2 id="artI-s8">Section 8. Oversight Powers</h2>
+<p><strong>(a) Subpoenas.</strong> A subpoena issued by a committee of either chamber is self-enforcing. A person who fails to comply within thirty days, absent a judicial stay, is subject to accruing daily civil penalties and, after sixty days, to detention for contempt ordered by the courts on an expedited basis. Executive privilege may be asserted only by the President personally, in writing, with particularity, and is subject to expedited judicial review under <a class="xref" href="#artIII-s5">Article III, Section 5</a>.</p>
+<p><strong>(b) Congressional resources.</strong> The budgets of the chambers' oversight, audit, and research arms shall be set by formula as a fixed share of total appropriations and may not be reduced by the executive or by a single Congress.</p>
+<h2 id="artI-s9">Section 9. Powers of Congress</h2>
+<p><strong>(a) The inherited core.</strong> Congress shall have power to lay and collect taxes, duties, and imposts, including taxes on incomes from whatever source derived without apportionment; to borrow and to pay the debts of the United States; to coin money and regulate its value; to establish uniform laws of naturalization and of bankruptcy; to provide for the common defense, declare war, and raise, support, and govern the armed forces; to conduct the foreign relations of the United States and to make treaties as elsewhere provided; to establish post offices and post roads; to fix standards of weights and measures; to define and punish offenses against the law of nations and on the high seas; and to secure to authors and inventors the exclusive right to their writings and discoveries, for limited terms fixed by law, never longer than fifty-six years for a work of authorship nor twenty years for an invention, and never extended as to any existing work or invention.</p>
+<p><strong>(b) Commerce.</strong> Congress shall have power to regulate trade, transportation, communication, and markets that cross the boundaries of a State or of the United States, and the channels, instrumentalities, and networks thereof, including the energy grid, financial markets and instruments, and digital networks and platforms.</p>
+<p><strong>(c) Spillover.</strong> Congress shall have power to regulate harms that cross the boundaries of a State — pollution of air and water, the disruption of climate, and communicable disease — and the safety of food, drugs, and products in national circulation; and to give effect to <a class="xref" href="#artV-s4">Article V, Section 4</a>.</p>
+<p><strong>(d) Enforcement.</strong> Congress shall have power to enforce, by appropriate legislation, the provisions of this Constitution. This power is to be construed broadly in favor of the right or guarantee protected.</p>
+<p><strong>(e) The residual.</strong> Congress shall have power to legislate in all cases to which the separate States are incompetent, or in which the harmony of the United States may be interrupted by the exercise of individual State legislation; a law under this subsection shall state the incompetence or interruption it answers, and the courts may review whether it does.</p>
+<p><strong>(f) Guardrails.</strong> The United States may regulate persons, spend, and act directly, but shall not command the legislative or executive apparatus of a State to administer or enforce a federal program. A condition on funds granted to a State shall relate to the purpose of the spending and shall not be so great in proportion to the State's resources as to leave it no real choice. The general criminal law remains with the States, except as an offense arises under a power enumerated in this Section.</p>
+<p><strong>(g) Necessary and proper.</strong> Congress may make all laws necessary and proper for carrying into execution the foregoing powers and all others vested by this Constitution.</p>
+<hr />
+<h1 id="a2">ARTICLE II — THE EXECUTIVE</h1>
+<h2 id="artII-s1">Section 1. Executive Power</h2>
+<p>The executive power is vested in a President of the United States, who shall hold office for a term of four years. No person shall be elected President more than twice.</p>
+<h2 id="artII-s2">Section 2. Election of the President</h2>
+<p><strong>(a) Direct election.</strong> The President and Vice President shall be elected jointly by direct vote of the people of the United States. There shall be no electoral college.</p>
+<p><strong>(b) Ranked-choice ballot.</strong> Voters shall rank the candidates in order of preference, and may rank as many candidates as appear on the ballot. Counting proceeds by rounds: in each round the candidate with the fewest continuing votes is eliminated and each of that candidate's ballots transfers to its next-ranked continuing candidate. The winner is the first candidate to receive more than fifty percent of continuing ballots.</p>
+<p><strong>(c) Exhausted ballots.</strong> A ballot with no continuing ranked candidate is exhausted and excluded from the denominator in subsequent rounds. The majority required by subsection (b) is a majority of continuing ballots in the decisive round.</p>
+<p><strong>(d) Uniform national count.</strong> The ballot format, counting rules, elimination sequence, and certification procedure shall be uniform throughout the United States as provided in <a class="xref" href="#a4">Article IV</a>. The National Election Authority shall aggregate the state-certified counts and conduct the elimination rounds.</p>
+<p><strong>(e) Recounts.</strong> A recount is automatic in any elimination round decided by a margin of less than one-quarter of one percent of continuing ballots. Recount and certification deadlines shall be fixed by <a class="xref" href="#a4">Article IV</a> and completed before the meeting of the new Congress.</p>
+<p><strong>(f) Ballot access.</strong> A candidate qualifies for the presidential ballot by petition signatures equal to one-tenth of one percent of the votes cast in the preceding presidential election, distributed across at least ten States, or by nomination of a party whose candidate received at least two percent of first-preference votes in the preceding presidential election.</p>
+<h2 id="artII-s3">Section 3. Limits on Executive Power</h2>
+<p><strong>(a) Executive orders.</strong> The President may issue directives only to execute powers granted by this Constitution or by law. No directive may create new legal obligations on persons outside the executive branch, appropriate or reprogram funds, or suspend the operation of any statute.</p>
+<p><strong>(b) Emergency powers.</strong> A presidential declaration of emergency expires after thirty days unless extended by Congress under <a class="xref" href="#artI-s4">Article I, Section 4(c)</a>. No emergency declaration may suspend elections, extend any term of office, or restrict the franchise.</p>
+<p><strong>(c) War powers.</strong> The armed forces shall not be introduced into hostilities without a declaration or authorization by Congress, except to repel sudden attack, and any such defensive engagement must be reported to Congress within forty-eight hours and terminated within sixty days absent authorization.</p>
+<p><strong>(d) Pardons.</strong> The pardon power extends to offenses against the United States, except in cases of impeachment, offenses in which the President or the President's family or campaign is implicated, and offenses committed at the direction or for the benefit of the President. Pardons within these excepted categories are void and subject to judicial review.</p>
+<p><strong>(e) Inspectors general.</strong> Inspectors general of the executive departments are appointed for fixed seven-year terms, removable only for cause stated in writing to Congress, and their reports shall be transmitted to Congress unaltered.</p>
+<p><strong>(f) Self-dealing.</strong> The President and Vice President shall divest or place in blind trust all assets presenting a conflict of interest, shall receive no emolument, payment, or benefit from any foreign or domestic government or entity beyond their salary, and shall make their tax returns public annually.</p>
+<p><strong>(g) Election administration.</strong> No officer or employee of the executive branch shall direct, supervise, or interfere with the administration, counting, or certification of any election. This function is reserved to the States and the National Election Authority under <a class="xref" href="#a4">Article IV</a>.</p>
+<h2 id="artII-s4">Section 4. Succession, Disability, and Removal</h2>
+<p>Provisions of the prior Constitution's <a class="xref" href="#a2">Article II</a> and the Twelfth, Twentieth, and Twenty-Fifth Amendments governing succession, inability, and the Vice Presidency are incorporated, adapted to direct election.</p>
+<p>The President, Vice President, and all civil officers of the United States shall be removed from office on impeachment by the House and conviction by the affirmative vote of sixty-five percent of the Senate, for treason, bribery, or other high crimes and misdemeanors.</p>
+<hr />
+<h1 id="a3">ARTICLE III — THE JUDICIARY</h1>
+<h2 id="artIII-s1">Section 1. Judicial Power</h2>
+<p>The judicial power of the United States is vested in one Supreme Court and in such inferior courts as Congress may establish. Judges of the inferior courts shall hold office during good behavior.</p>
+<h2 id="artIII-s2">Section 2. The Supreme Court</h2>
+<p><strong>(a) Composition and terms.</strong> The Supreme Court shall consist of nine Justices. Each Justice shall serve a single, non-renewable term of eighteen years, staggered so that one term begins in each odd-numbered year. Upon completion of the term, a Justice may continue to serve on an inferior court during good behavior.</p>
+<p><strong>(b) Regular appointments.</strong> Each President shall appoint one Justice in the first and third year of each presidential term, by and with the confirmation of sixty percent of the Senate. The mandatory-vote rules of <a class="xref" href="#artI-s5">Article I, Section 5</a> apply to every judicial nomination: the Senate shall vote on each nominee within one hundred twenty days, and a nominee not voted upon within that period is confirmed by default.</p>
+<p><strong>(c) Vacancies.</strong> A vacancy arising before the end of a term is filled for the remainder of that term only, by the same appointment procedure, so that the eighteen-year rotation is undisturbed.</p>
+<p><strong>(d) Transition.</strong> Justices serving at ratification shall be assigned staggered remaining terms by lot, longest terms to the most recently appointed.</p>
+<h2 id="artIII-s3">Section 3. Judicial Conduct</h2>
+<p>The Justices and judges of the United States shall be bound by a code of conduct with the force of law, including mandatory recusal standards enforceable by a panel of chief judges of the circuits, public financial disclosure, and prohibition of gifts beyond nominal value.</p>
+<h2 id="artIII-s4">Section 4. Jurisdiction</h2>
+<p>The judicial power extends to all cases arising under this Constitution, the laws of the United States, and treaties, and to the categories of cases enumerated in the prior Constitution. Congress may regulate appellate jurisdiction, but may not withdraw from the courts jurisdiction over claims arising under this Constitution, including the franchise protections of <a class="xref" href="#a4">Article IV</a>.</p>
+<h2 id="artIII-s5">Section 5. Expedited Constitutional Docket</h2>
+<p>Cases presenting disputes between the branches, challenges to election law or administration, assertions of executive privilege, and all other cases this Constitution assigns to this docket shall be heard on it: filed directly in the Supreme Court or certified to it, argued within sixty days, and decided within ninety days of filing. During the pendency of such a case, the status quo prior to the challenged action is preserved.</p>
+<hr />
+<h1 id="a4">ARTICLE IV — ELECTIONS AND THE FRANCHISE</h1>
+<h2 id="artIV-s1">Section 1. The Right to Vote</h2>
+<p><strong>(a) Affirmative right.</strong> Every citizen of the United States who has attained the age of eighteen years has the right to vote in all elections held under this Constitution and under the constitution and laws of the State in which the citizen resides. This right is fundamental and individual, and shall not be denied, abridged, or burdened by the United States or by any State.</p>
+<p><strong>(b) Standard of review.</strong> Any law, regulation, or practice that has the purpose <strong>or effect</strong> of denying, abridging, or materially burdening the right to vote is void, unless it is the least restrictive means of serving a compelling interest in the integrity of elections. The burden of justification rests on the government.</p>
+<p><strong>(c) No disqualification.</strong> The right to vote shall not be conditioned on payment of any tax, fee, or debt; on property; on literacy; or on any test. </p>
+<p><strong>(d) Restoration.</strong> The right to vote of a person disqualified by reason of criminal conviction is restored automatically and immediately upon release from incarceration, without application, fee, or other condition. No denial of the right to vote shall attach to any conviction not resulting in incarceration, nor be conditioned on the payment of any fine, fee, or restitution.</p>
+<h2 id="artIV-s2">Section 2. Division of Election Authority</h2>
+<p><strong>(a) Constitutional rules.</strong> The rules of federal elections stated in this Article — the franchise, the ballot, the count, access standards, and district-drawing — are fixed by this Constitution and may be altered only by amendment. Neither Congress nor any State may diminish them. Congress may legislate above this floor only to expand access to the franchise, never to restrict it.</p>
+<p><strong>(b) State administration.</strong> The States shall administer all elections within their borders, including registration, polling places, counting, canvassing, and certification, in conformity with this Article. No officer of the federal executive branch shall participate in, direct, or interfere with election administration.</p>
+<p><strong>(c) State discretion above the floor.</strong> Above the minimums fixed by this Article, each State retains full discretion over the manner of its elections, including additional early voting, voting by mail, vote centers, and all rules for elections to state and local office.</p>
+<h2 id="artIV-s3">Section 3. The National Election Authority</h2>
+<p><strong>(a) Establishment.</strong> There is established a National Election Authority, independent of the executive and legislative branches.</p>
+<p><strong>(b) Composition.</strong> The Authority consists of seven Commissioners appointed to staggered fourteen-year terms, nominated by the President and confirmed by sixty percent of the Senate, no more than three of whom may be affiliated with the same political party. Commissioners are removable only for cause, by concurrence of both chambers.</p>
+<p><strong>(c) Budget.</strong> The Authority's budget is set by formula as a share of appropriations and may not be reduced in retaliation for any decision.</p>
+<p><strong>(d) Functions.</strong> The Authority shall: aggregate state-certified counts in federal elections and conduct the ranked-choice elimination rounds; order and supervise recounts under the automatic triggers of this Constitution; audit state administration for compliance with this Article; approve or deny proposed reductions in polling places under <a class="xref" href="#artIV-s5">Section 5</a>; and publish all data, counts, and audit results. The Authority makes no election policy and administers no polling place.</p>
+<p><strong>(e) Mutual audit.</strong> Any State may demand and obtain an audit of the Authority's national aggregation. The Authority may audit any State's count against the standards of this Article. No body certifies its own work.</p>
+<h2 id="artIV-s4">Section 4. The Ballot and the Count</h2>
+<p><strong>(a) Ranked-choice voting.</strong> All elections to federal office shall be conducted by ranked-choice ballot: single-winner offices — President and Senator — by instant-runoff count under the rules of <a class="xref" href="#artII-s2">Article II, Section 2</a>, and Representatives by single transferable vote under the rules of <a class="xref" href="#artI-s2">Article I, Section 2(c)</a>. One ballot design serves both counts.</p>
+<p><strong>(b) Uniform standards.</strong> Ballot format, counting procedure, tabulation equipment standards, chain-of-custody requirements, and certification deadlines in federal elections shall be uniform nationwide, as specified by this Article and the published standards of the Authority.</p>
+<p><strong>(c) Paper record.</strong> Every vote shall produce a voter-verifiable paper record, which is the ballot of record in any recount or audit.</p>
+<p><strong>(d) Recounts.</strong> A recount is automatic in any federal race in which any elimination, or the filling of any final seat, is decided by less than one-quarter of one percent of continuing ballots. Recounts re-run the full transfer and elimination sequence from the paper record.</p>
+<p><strong>(e) Certification.</strong> Certification of results is a ministerial duty. No certifying officer may refuse or delay certification of a count that conforms to this Article; refusal is a federal offense and the court shall order certification on an expedited basis.</p>
+<h2 id="artIV-s5">Section 5. Access to the Ballot Box</h2>
+<p><strong>(a) Polling place density.</strong> Each jurisdiction shall maintain at least one polling place for every five thousand registered voters. No voter shall be assigned a polling place more than thirty minutes' travel by ordinarily available transportation from the voter's residence; in jurisdictions where density makes this impracticable, the State shall provide transportation or mobile polling without charge.</p>
+<p><strong>(b) No net reduction.</strong> No jurisdiction may reduce its number of polling places, or relocate polling places in a manner that materially increases travel burden, without advance approval of the National Election Authority, granted only upon a showing that access is not diminished for any community.</p>
+<p><strong>(c) Wait times.</strong> If the average wait to vote at any polling place exceeds thirty minutes in any election, the jurisdiction shall add capacity at that location before the next federal election. The Authority shall measure and publish wait times.</p>
+<p><strong>(d) Election weekend.</strong> Federal elections shall be held over a two-day period consisting of a Saturday and the following Sunday, each day with polls open no fewer than twelve hours, including hours before and after the ordinary working day.</p>
+<p><strong>(e) Early voting.</strong> In-person early voting shall be available for no fewer than fourteen consecutive days before election weekend, including two full weekends, with evening hours on ordinary working days.</p>
+<p><strong>(f) Registration.</strong> Every eligible citizen shall be registered upon interaction with any government agency unless the citizen declines, and same-day registration shall be available at every polling place with proof of residence.</p>
+<h2 id="artIV-s6">Section 6. Protection of Voters at Work</h2>
+<p><strong>(a) Right to time.</strong> Every worker is entitled to paid leave sufficient to vote in any election in which the worker is eligible, at a time of the worker's choosing on any voting day or early-voting day.</p>
+<p><strong>(b) Prohibition.</strong> It is a federal offense for any employer, or any agent of an employer, to deny such leave; to schedule, reschedule, or require work, meetings, or travel with the purpose or effect of impeding an employee's ability to vote; or to retaliate against any worker for voting, for how the worker voted, or for asserting rights under this Section.</p>
+<p><strong>(c) Penalties.</strong> Violations are punishable by civil penalties assessed per affected worker and scaled to the gross revenue of the employer, so that no penalty is absorbed as a cost of business; by personal liability of the individual managers and officers who directed or permitted the violation; and, for willful or repeated violations, by criminal penalty.</p>
+<p><strong>(d) Private enforcement.</strong> Any affected worker may sue directly for damages, penalties, and injunctive relief, with attorney's fees, and without exhaustion of any administrative process. Retaliation for bringing such a suit is itself a violation. No agreement may waive rights under this Section.</p>
+<h2 id="artIV-s7">Section 7. Redistricting</h2>
+<p><strong>(a) Independent commissions.</strong> Congressional districts in each State shall be drawn by an independent citizen redistricting commission established under uniform national criteria: members selected by lot from qualified applicant pools balanced among party affiliations and the unaffiliated; sitting officeholders, candidates, lobbyists, and party officials excluded.</p>
+<p><strong>(b) Criteria.</strong> Multi-member districts shall be contiguous, as equal in population per seat as practicable, respectful of communities of interest and political subdivisions, and drawn at the largest magnitude the State's delegation and geography permit. No plan shall be drawn with the purpose or effect of favoring or disfavoring a political party or diluting the voting strength of any community.</p>
+<p><strong>(c) Review.</strong> Adopted maps are subject to direct expedited review by the courts under <a class="xref" href="#artIII-s5">Article III, Section 5</a>. A map found in violation is redrawn by the commission; if the commission fails, the court adopts a compliant map.</p>
+<h2 id="artIV-s8">Section 8. Election Security</h2>
+<p><strong>(a) Decentralization preserved.</strong> No law shall consolidate the administration or counting of elections into any single national system, database, or facility.</p>
+<p><strong>(b) Audits.</strong> Every federal election shall be followed by risk-limiting audits of the paper record, conducted by the States and verified by the Authority, with results public.</p>
+<p><strong>(c) Foreign and domestic interference.</strong> Knowingly false statements about the time, place, or manner of voting, intimidation of voters, and tampering with election infrastructure are federal offenses.</p>
+<hr />
+<h1 id="a5">ARTICLE V — THE STATES</h1>
+<h2 id="artV-s1">Section 1. Reserved Powers</h2>
+<p>The powers not delegated to the United States by this Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.</p>
+<h2 id="artV-s2">Section 2. Obligations Among States</h2>
+<p>Full faith and credit, privileges and immunities, extradition, and the guarantee to every State of a republican form of government are incorporated from the prior Constitution.</p>
+<h2 id="artV-s3">Section 3. Admission</h2>
+<p>New States may be admitted by Congress under the general legislative rule of <a class="xref" href="#artI-s4">Article I, Section 4(a)</a>.</p>
+<h2 id="artV-s4">Section 4. Boundaries of Harm</h2>
+<p><strong>(a) The rule.</strong> No State, and no person or enterprise within one, shall use or permit the use of its territory so as to cause measurable pollution or environmental harm within another State, except as the States concerned have consented by interstate compact.</p>
+<p><strong>(b) Compacts and remedies.</strong> The States may by compact fix the levels, terms, and compensation of harms they consent to bear from one another. Absent a compact, a State harmed, or any person within it, may sue on the expedited docket of <a class="xref" href="#artIII-s5">Article III, Section 5</a>; a continuing harm shall be enjoined, and harm done shall be compensated by those who caused or permitted it.</p>
+<p><strong>(c) Harms national by nature.</strong> Harms that no boundary contains — the disruption of climate, the atmosphere, and waters shared by all — are governed by the United States under <a class="xref" href="#artI-s9">Article I, Section 9(c)</a>, and are not subject to compact among fewer than all.</p>
+<hr />
+<h1 id="a6">ARTICLE VI — RIGHTS</h1>
+<h2 id="artVI-s1">Section 1. Incorporation</h2>
+<p>The rights secured by the first ten amendments to the prior Constitution, and by the Thirteenth and Fourteenth Amendments, are incorporated in full as against the United States and every State, except that <a class="xref" href="#a7">Article VII</a> of this Constitution supersedes the Second Amendment, <a class="xref" href="#a8">Article VIII</a> the Fourth, and <a class="xref" href="#artVI-s4">Sections 4</a> through 10 of this Article the First, Fifth, Sixth, and Eighth to their extent, and the Thirteenth Amendment is incorporated without its exception for punishment for crime: neither slavery nor involuntary servitude shall exist within the United States or any place subject to their jurisdiction.</p>
+<h2 id="artVI-s2">Section 2. Equal Protection and Due Process</h2>
+<p>No government within the United States shall deny to any person the equal protection of the laws, nor deprive any person of life, liberty, or property without due process of law. Citizenship of all persons born or naturalized in the United States is affirmed.</p>
+<h2 id="artVI-s3">Section 3. Disqualification for Insurrection</h2>
+<p>No person shall hold any office, civil or military, under the United States or any State who, having previously taken an oath to support the Constitution, has engaged in insurrection or rebellion against it, or given aid or comfort to its enemies. Disqualification under this Section is determined on the expedited docket of <a class="xref" href="#artIII-s5">Article III, Section 5</a>, upon suit by the National Election Authority or by a State, after a full evidentiary hearing, with appeal of right; and may be removed by the vote of sixty-five percent of each chamber of Congress.</p>
+<h2 id="artVI-s4">Section 4. Freedom of Expression</h2>
+<p><strong>(a) The right.</strong> No government shall abridge the freedom of expression, in any medium, because of its content or its viewpoint.</p>
+<p><strong>(b) The exceptions, closed.</strong> Expression may be restricted only within these categories: incitement intended and likely to produce imminent lawless action; true threats; defamation, within the fault standards the freedom of expression requires; fraud; obscenity; expression integral to the commission of a crime; and knowing falsehoods concerning the time, place, or manner of voting, as provided in <a class="xref" href="#artIV-s8">Article IV, Section 8</a>. No other category of expression may be restricted for its content, and none may be added but by amendment of this Constitution.</p>
+<p><strong>(c) No laundering.</strong> No instrumentality of government shall induce, pressure, reward, or direct any private actor to restrict expression that the government could not restrict directly. Restriction so procured is an abridgment by the government, remediable under this Constitution against the officials responsible.</p>
+<p><strong>(d) Neutral regulation.</strong> Nothing in this Section prevents reasonable regulation of the time, place, and manner of expression, applied without regard to content or viewpoint and leaving open ample alternative channels.</p>
+<h2 id="artVI-s5">Section 5. Religion and Conscience</h2>
+<p><strong>(a) Free exercise.</strong> Every person is free in religion, belief, and conscience — in practice, observance, expression, and in the absence of belief — and no government shall impose a disability or preference on account of it.</p>
+<p><strong>(b) No establishment.</strong> No government shall establish, sponsor, endorse, or adopt any religion; prefer any religion over another or religion over its absence; or direct public funds to religious exercise except on terms equally available without regard to religion.</p>
+<p><strong>(c) Accommodation without third-party cost.</strong> Law may accommodate the exercise of religion and conscience where the accommodation's burden falls on the person accommodated or on the government; no accommodation or exemption shall operate to deprive any other person of a right, protection, or service the law otherwise provides.</p>
+<p><strong>(d) Protection of minors.</strong> No exemption or accommodation of religion or conscience may be exercised so as to deny a minor medical care, education, or any protection of the law. The upbringing of children in a family's faith is untouched by this subsection; the surrender of a child's protections to it is foreclosed.</p>
+<h2 id="artVI-s6">Section 6. Press, Assembly, and Petition</h2>
+<p><strong>(a) Newsgathering.</strong> The freedom of the press belongs to the activity of gathering and publishing information to inform the public, whoever performs it. No person engaged in it shall be compelled to disclose a confidential source or unpublished newsgathering material, except upon a court's finding that the information is essential to a compelling need and unavailable by any alternative means.</p>
+<p><strong>(b) Assembly.</strong> The people may assemble peaceably, and an assembly may be dispersed only for actual violence or imminent lawless action by the assembled themselves, never on account of the reaction or threats of those who oppose them. Any permit required for assembly shall be granted on content-neutral terms, promptly, and at a cost that does not burden the right.</p>
+<p><strong>(c) Petition.</strong> The people may petition every government for redress of grievances. A petition to Congress subscribed by one percent of the national electorate shall receive a committee hearing and a published response within one hundred eighty days.</p>
+<h2 id="artVI-s7">Section 7. The Accused</h2>
+<p><strong>(a) Charge.</strong> No person shall be held to answer for a serious crime except upon indictment by a grand jury or upon a finding of probable cause at an adversarial preliminary hearing before a judge, at the election of the accused.</p>
+<p><strong>(b) Counsel.</strong> The accused has the right to counsel at every critical stage. The publicly provided defense shall be funded, staffed, and compensated at parity with the prosecution in every jurisdiction, with enforceable caseload limits; parity is a floor for the defense and never a limit on any accused's own counsel. The prosecution shall accept no private funding, personnel, or services of any kind; and all donated or below-cost legal services rendered to any party shall be disclosed on the public docket at fair market value.</p>
+<p><strong>(c) Pretrial liberty.</strong> Release before trial is the rule. A person may be detained only upon a court's individualized finding, on the record, that no less restrictive condition suffices to reasonably assure appearance or the safety of others. Wealth shall never determine liberty: no person shall be detained who would be released if able to pay, nor released on payment alone who would otherwise be detained.</p>
+<p><strong>(d) The clocks.</strong> A detained person shall be tried within thirty days of charge for a misdemeanor and sixty days for a felony, extendable once, to a ceiling of one hundred twenty days, only upon a judge's written finding of extraordinary complexity. Upon any lapse of these periods the person is released, without prejudice to the prosecution. A person at liberty shall be tried within one hundred eighty days, extendable only at the election of the accused. Time requested by the defense counts against no clock. A jurisdiction chronically exceeding these periods shall add judicial and defense capacity, measured and published, before any further extension may be granted in it.</p>
+<p><strong>(e) No collateral forfeiture.</strong> Pretrial detention is not abandonment, default, or fault in any civil matter: periods toward the termination of parental rights are tolled by it; no judgment of eviction or default shall be entered against a person for absence caused by state custody; and detention alone shall not constitute abandonment of employment in law.</p>
+<p><strong>(f) Compensation.</strong> A person detained before trial and not convicted, or detained longer than the sentence ultimately imposed, shall be compensated for every excess day at no less than five times the national median daily earnings, together with all actual losses. This compensation may not be waived, and no plea or agreement may be conditioned on its surrender. It is paid from the general treasury of the detaining jurisdiction and never from the budgets of the courts or the defense. Where the detention or prosecution involved the suppression of exculpatory evidence, fabrication, or perjury by any official, the compensation is tenfold, the officials responsible are personally liable without immunity, and the conduct is a crime.</p>
+<p><strong>(g) Rights carried.</strong> The privileges against self-incrimination and double jeopardy, the rights to a speedy and public trial by an impartial jury, to notice of the accusation, to confront adverse witnesses, and to compulsory process, are secured as under the amendments incorporated by <a class="xref" href="#artVI-s1">Section 1</a>, subject to this Section and to <a class="xref" href="#artVI-s8">Section 8</a> where they touch the same ground.</p>
+<h2 id="artVI-s8">Section 8. Punishment</h2>
+<p><strong>(a) No death penalty.</strong> Neither the United States nor any State shall impose or carry out a sentence of death.</p>
+<p><strong>(b) Proportion to means.</strong> Every fine and monetary penalty imposed on a natural person shall be proportioned to that person's means, measured by income and wealth together, so that equal offenses bear equal burdens. No person shall be detained, nor any license or right suspended, for inability to pay.</p>
+<p><strong>(c) Cruel and unusual.</strong> Excessive fines shall not be imposed, nor cruel and unusual punishments inflicted; and no punishment shall deprive a person of what <a class="xref" href="#artVI-s7">Section 7(e)</a> and <a class="xref" href="#artIV-s1">Article IV, Section 1(d)</a> preserve.</p>
+<h2 id="artVI-s9">Section 9. Social Guarantees</h2>
+<p><strong>(a) Education.</strong> Every person has the right to education: free at every public institution through the completion of secondary education, and progressively free beyond it.</p>
+<p><strong>(b) Health.</strong> Every person has the right to comprehensive health care — medical, dental, vision, and mental health alike — free at the point of use.</p>
+<p><strong>(c) Care.</strong> Every person has the right to care in need: short-term and long-term care, and care in the home where the person's condition permits it.</p>
+<p><strong>(d) Material security.</strong> Every person has the right to adequate housing; to sufficient food and clean water; and to social security in old age, disability, unemployment, and survivorship.</p>
+<p><strong>(e) Work and rest.</strong> Every worker has the right to safe and healthy conditions; to organize, and to bargain collectively; to limits on working hours and to weekly rest; to an annual period of paid vacation of no less than a minimum fixed by law; to paid parental leave and to child care; and to compensation sufficient to live in dignity, at no less than a floor fixed by law and revised with measured costs.</p>
+<p><strong>(f) Digital access.</strong> Every person has the right of access to the open internet, on the footing that participation in the life of the nation now requires it.</p>
+<p><strong>(g) Realization.</strong> The rights of this Section are justiciable. The duty they impose is their progressive realization to the maximum of available resources, and no measure may reduce achieved protection except as a demonstrably necessary and temporary response to grave circumstance. An independent authority, constituted as provided in <a class="xref" href="#artIV-s3">Article IV, Section 3(b)–(c)</a>, shall measure and publish the coverage and shortfall of each guarantee; a published shortfall obligates the responsible governments to add capacity before the next measurement cycle, on the pattern of <a class="xref" href="#artIV-s5">Article IV, Section 5(c)</a>.</p>
+<p><strong>(h) Funding.</strong> The United States bears the duty of funding the guarantees of this Section. The States may administer them, above the national floor, in the manner of <a class="xref" href="#artIV-s2">Article IV, Section 2(c)</a>.</p>
+<h2 id="artVI-s10">Section 10. Equality</h2>
+<p><strong>(a) Equal in right.</strong> Every person is equal before and under the law, and has the right to the equal protection and equal benefit of the law without discrimination — in particular without discrimination on account of race, color, national origin, sex, pregnancy, sexual orientation, gender identity, disability, age, or religion, or on any analogous ground of personal characteristic or historical exclusion that the courts may recognize.</p>
+<p><strong>(b) Equality of the sexes.</strong> Equality of rights under the law shall not be denied or abridged by the United States or by any State on account of sex.</p>
+<p><strong>(c) Amelioration.</strong> No law, program, or activity that has as its object the amelioration of the conditions of disadvantaged persons or groups is precluded by this Section.</p>
+<hr />
+<h1 id="a7">ARTICLE VII — WEAPONS AND PUBLIC SAFETY</h1>
+<h2 id="artVII-s1">Section 1. Definition</h2>
+<p><strong>(a) Weapon.</strong> A weapon is any instrument or system designed, manufactured, marketed, or adapted for causing harm to persons, or predominantly used to cause such harm.</p>
+<p><strong>(b) Exclusions.</strong> An instrument whose harm to persons is neither its designed purpose nor its predominant use is not a weapon under this Article, and remains subject to ordinary law; it becomes a weapon upon adaptation for harm.</p>
+<h2 id="artVII-s2">Section 2. Tiers</h2>
+<p><strong>(a) Personal tier.</strong> Weapons suited to the defense of a person or household, whose capacity for harm is limited in rate and scale to individual confrontation.</p>
+<p><strong>(b) Restricted tier.</strong> Weapons whose rate of fire, capacity, projectile design, or other characteristics materially exceed the requirements of personal defense.</p>
+<p><strong>(c) Population-scale tier.</strong> Weapons whose design, rate of harm, indiscriminate effect, or autonomous operation renders them capable of harm to a population. Weapons of this tier may not be manufactured for, sold to, or possessed by any civilian person, and their assignment to this tier is not subject to the reclassification triggers of <a class="xref" href="#artVII-s6">Section 6</a>.</p>
+<p><strong>(d) Assignment.</strong> The assignment of weapon classes to tiers is made and published by the Authority established in <a class="xref" href="#artVII-s5">Section 5</a>, according to measured capacity for harm, subject to subsection (c) and to the triggers of <a class="xref" href="#artVII-s6">Section 6</a>.</p>
+<h2 id="artVII-s3">Section 3. The Right of Personal Defense</h2>
+<p><strong>(a) The right.</strong> Every person has the right to defend person and home, and to acquire, keep, and maintain weapons of the personal tier for that purpose.</p>
+<p><strong>(b) Conditions.</strong> The exercise of this right is conditioned on licensure upon demonstrated competence and safety training; registration of each weapon; insurance against the harm the weapon may cause; and secure storage. These conditions shall be administered without discrimination, at reasonable cost, and with prompt decision; denial or revocation of a license requires stated cause and is subject to judicial review.</p>
+<p><strong>(c) Disqualification.</strong> Licensure may be denied or revoked only for demonstrated danger to self or others, adjudicated incapacity, or conviction of a crime of violence, under uniform standards and with due process.</p>
+<p><strong>(d) Scope.</strong> This Section confers no right to weapons of the restricted or population-scale tiers, whose civilian acquisition and possession are matters for legislation under <a class="xref" href="#a1">Article I</a>, and no right to carry weapons in public places, which is likewise a matter for legislation.</p>
+<p><strong>(e) Existing weapons.</strong> A weapon of the personal tier lawfully possessed at ratification retains its lawful status permanently upon registration, without charge, within three years; the conditions of subsection (b) attach thereafter upon its first transfer. A weapon reclassified to the restricted tier remains lawful in the hands of its registered owner but may be transferred only to a licensed dealer or to the State at fair value.</p>
+<h2 id="artVII-s4">Section 4. Responsibility of Manufacturers and Sellers</h2>
+<p><strong>(a) No immunity.</strong> No law shall grant any manufacturer, importer, distributor, or seller of weapons immunity from civil or criminal liability for harm caused by their products or conduct. Liability for such harm may not be waived, capped in advance, or barred by the intervening criminal act of a third party where the conduct of the manufacturer or seller contributed to the harm.</p>
+<p><strong>(b) Conduct liability.</strong> Manufacturers and sellers are liable for harm resulting from negligent or reckless design, marketing, distribution, or sale, including supply to sellers whose weapons are disproportionately traced to crime, marketing that promotes unlawful use, and failure to incorporate feasible safety technology.</p>
+<p><strong>(c) Harm levy.</strong> Every weapon and unit of ammunition sold shall bear a levy set actuarially from the measured harm of its class under <a class="xref" href="#artVII-s6">Section 6(b)</a>, paid by the manufacturer or importer, and dedicated to the compensation of victims of weapon harm and to trauma care. The levy may not be reduced below the measured cost of harm.</p>
+<p><strong>(d) Insurance.</strong> Manufacturers and commercial sellers shall maintain insurance against the harm arising from their products and conduct, in amounts set actuarially under <a class="xref" href="#artVII-s6">Section 6(b)</a>.</p>
+<p><strong>(e) Enforcement.</strong> Victims of weapon harm and their survivors may sue directly under this Section, with attorney's fees; penalties for violations are assessed per unit and scaled to the gross revenue of the violator; and individual officers and managers who direct or permit violations are personally liable.</p>
+<h2 id="artVII-s5">Section 5. The Weapon Harm Authority</h2>
+<p><strong>(a) Establishment.</strong> There is established a Weapon Harm Authority, independent of the executive and legislative branches, constituted as the National Election Authority is constituted under <a class="xref" href="#artIV-s3">Article IV, Section 3(b)–(c)</a>: seven Commissioners, staggered fourteen-year terms, confirmation by sixty percent of the Senate, no more than three of one party, removal only for cause, budget set by formula.</p>
+<p><strong>(b) Measurement.</strong> The Authority shall maintain continuous public measurement of deaths and injuries by weapon class, mechanism, and circumstance, drawing on the vital statistics of the States, and shall publish the data, methods, and thresholds by which the triggers of <a class="xref" href="#artVII-s6">Section 6</a> operate.</p>
+<p><strong>(c) Protection of knowledge.</strong> No law shall prohibit, defund, condition, or restrict research into weapon harm, nor the collection or publication of the data required by this Section.</p>
+<h2 id="artVII-s6">Section 6. Automatic Remedies</h2>
+<p><strong>(a) Reclassification.</strong> A weapon class whose measured rate of death or serious injury exceeds the published threshold of its tier for two consecutive years is reclassified to the next higher tier without legislative act; it returns to its prior tier only when its measured rate falls below the threshold and remains below it for four consecutive years.</p>
+<p><strong>(b) Actuarial recalibration.</strong> The harm levy of <a class="xref" href="#artVII-s4">Section 4(c)</a> and the insurance amounts of <a class="xref" href="#artVII-s3">Sections 3(b)</a> and 4(d) are recalculated by the Authority on a fixed biennial cycle from the measured harm data, and take effect upon publication.</p>
+<p><strong>(c) Seller triggers.</strong> A seller whose sold weapons are traced to crime at a rate exceeding the published threshold enters mandatory audit; failure to remedy within one year suspends the seller's license.</p>
+<p><strong>(d) Manufacturer triggers.</strong> A pattern of deaths or injuries linked by the data to a defect or design characteristic of a weapon class obligates its manufacturers to recall and remedy at their own cost.</p>
+<p><strong>(e) Process.</strong> All thresholds and methods are fixed by published rule after public notice and comment; every trigger operates only on published data; and every triggered action is subject to expedited judicial review under <a class="xref" href="#artIII-s5">Article III, Section 5</a>, which shall not stay a trigger absent clear error in the data or its application.</p>
+<h2 id="artVII-s7">Section 7. Defense Against Governmental Overreach</h2>
+<p><strong>(a) No domestic deployment.</strong> The armed forces of the United States shall not be deployed against the civilian population, nor employed in the administration of civil law, except to repel sudden invasion or attack, reported and terminated as <a class="xref" href="#artII-s3">Article II, Section 3(c)</a> provides, or upon invasion or insurrection as authorized by Congress under <a class="xref" href="#artI-s4">Article I, Section 4(a)</a>.</p>
+<p><strong>(b) Duty to refuse.</strong> No member of the armed forces or of any law enforcement agency shall execute an order to violate this Constitution, including any order to interfere with an election, suppress the franchise, or use force against peaceable assembly. Refusal of such an order is a protected duty; no member shall be punished, discharged, or disadvantaged for it.</p>
+<p><strong>(c) State forces.</strong> Each State commands its own guard and defense forces except when called into federal service by act of Congress. No President may federalize a State's forces to act against the population of any State.</p>
+<p><strong>(d) Relation to this Article.</strong> The security of the people against governmental overreach is provided by this Section, by the election protections of <a class="xref" href="#a4">Article IV</a>, and by the emergency limits of <a class="xref" href="#artII-s3">Article II, Section 3(b)</a>, and does not enlarge any right to weapons under <a class="xref" href="#artVII-s3">Section 3</a>.</p>
+<hr />
+<h1 id="a8">ARTICLE VIII — INFORMATION AND PRIVACY</h1>
+<h2 id="artVIII-s1">Section 1. Security of Information</h2>
+<p><strong>(a) The right.</strong> The people shall be secure in their persons, homes, communications, and information against unreasonable search and seizure.</p>
+<p><strong>(b) Information follows the person.</strong> Information about a person, wherever held and by whomever stored, remains that person's own for the purposes of this Article. No custodian of a person's information may consent to its search or surrender on that person's behalf.</p>
+<h2 id="artVIII-s2">Section 2. Government Access</h2>
+<p><strong>(a) Warrant requirement.</strong> No search or seizure of protected information shall be made but upon a warrant, issued on probable cause, supported by oath, and particularly describing the person or account whose information is to be searched and the information sought, save in exigent circumstances defined by law and subject to prompt judicial review.</p>
+<p><strong>(b) Acquisition by any means.</strong> The acquisition of protected information by any instrumentality of government — whether by demand, purchase, exchange, subscription, or interception — is a search within this Article. No government may obtain by transaction what it may not obtain by warrant.</p>
+<h2 id="artVIII-s3">Section 3. Rights Against All Processors</h2>
+<p><strong>(a) Lawful basis.</strong> No person's information may be collected, processed, sold, or transferred, by any public or private actor, except upon a basis established by law or upon the person's freely given, informed, and specific authorization.</p>
+<p><strong>(b) Enumerated rights.</strong> Every person has the right to know what information about them is held and by whom; to correct it; to delete it; to receive it in usable form and take it elsewhere; and to object to its processing.</p>
+<p><strong>(c) Purpose limitation.</strong> Information collected for one purpose may not be sold or transferred for an unrelated purpose without fresh authorization from the person.</p>
+<p><strong>(d) Non-waivable core.</strong> The rights of this Section may not be waived by agreement, and access to any good or service may not be conditioned on authorization to collect or process information beyond what the good or service itself requires.</p>
+<p><strong>(e) Sensitive information.</strong> Information concerning health, biometry, genetics, precise location, belief, and intimate life receives the highest protection, processed only on the narrowest lawful basis.</p>
+<p><strong>(f) Proportionate duties.</strong> Legislation shall scale the duties of processors to the volume and sensitivity of processing, so that the obligations of this Section fall according to scale.</p>
+<p><strong>(g) Expression preserved.</strong> The rights of this Section, including deletion, do not reach journalism, archives, scholarship, court records within their public purpose, or information of legitimate public concern.</p>
+<h2 id="artVIII-s4">Section 4. Enforcement</h2>
+<p><strong>(a) Penalties.</strong> Violations of this Article are punishable by civil penalties scaled to the gross global revenue of the violator, with a fixed minimum penalty per person whose information was involved, escalating for willful or repeated violations up to prohibition from processing personal information within the United States.</p>
+<p><strong>(b) Disgorgement.</strong> All profit traceable to information processed in violation of this Article is forfeit, without regard to other penalties.</p>
+<p><strong>(c) Personal liability.</strong> Officers and managers who direct or knowingly permit violations are personally liable; willful trafficking in protected information is a criminal offense.</p>
+<p><strong>(d) Private enforcement.</strong> Any person whose information is processed in violation of this Article may sue directly, individually or as a class, for the minimum statutory damages without proof of further harm, with attorney's fees. Persons who expose violations from within an organization are protected and entitled to a share of penalties recovered.</p>
+<p><strong>(e) Government violations.</strong> Officials who acquire or use information in violation of this Article are personally liable without immunity; the remedies of <a class="xref" href="#artVIII-s6">Section 6</a> apply.</p>
+<h2 id="artVIII-s5">Section 5. Collection at Scale</h2>
+<p><strong>(a) No general collection.</strong> No instrumentality of government shall collect, intercept, retain, or compel the production of information about persons not individually named in a warrant issued under <a class="xref" href="#artVIII-s2">Section 2</a>. A warrant satisfies particularity only by naming specific persons or accounts; no warrant, order, or authority may run against a population, a facility, a channel of communication, or the public generally.</p>
+<p><strong>(b) Incidental collection.</strong> Information about persons other than a warrant's named targets, captured incidentally in lawful surveillance, shall not be retained beyond the period necessary to segregate it, and shall not be searched, queried, or used for any purpose absent a warrant naming the person concerned.</p>
+<p><strong>(c) Foreign intelligence.</strong> Surveillance of foreign powers and their agents outside the United States is not restricted by this Section; but the information of persons of the United States — its citizens and residents — whenever and however acquired under such surveillance, may be retained, searched, or used only upon a warrant under <a class="xref" href="#artVIII-s2">Section 2</a>, and no instrumentality of government may direct foreign-intelligence collection at a United States person, or request such collection of any foreign government, to evade this Article.</p>
+<p><strong>(d) Aggregate data.</strong> Genuinely aggregate or statistical information from which no person can be identified, alone or in combination with other available information, is outside this Article. Re-identification of a person from such information is a violation of it.</p>
+<p><strong>(e) Records of public acts.</strong> Records that the law makes public — of title, judgment, licensure, incorporation, and like public acts — remain open for the purposes for which the law makes them public. Their compilation, linkage, or sale to assemble profiles of persons for unrelated purposes is processing subject to <a class="xref" href="#artVIII-s3">Section 3</a>; and no instrumentality of government shall compile them at population scale except as this Section permits. Publication of a record shall not include sensitive information under <a class="xref" href="#artVIII-s3">Section 3(e)</a> beyond what the record's public purpose requires.</p>
+<h2 id="artVIII-s6">Section 6. Remedies Against Government</h2>
+<p><strong>(a) Exclusion.</strong> Information obtained in violation of this Article, and all evidence derived from it, is inadmissible in every proceeding, civil, criminal, or administrative, without exception.</p>
+<p><strong>(b) Damages.</strong> Every person whose information is searched, seized, acquired, retained, or used in violation of this Article may sue the responsible government directly for damages of no less than a minimum fixed by law for each violation, without proof of further harm, with attorney's fees.</p>
+<p><strong>(c) Personal liability.</strong> Officials who order, or knowingly execute, a search, acquisition, or program in violation of this Article are personally liable. No immunity, qualified or absolute, shall bar claims under this Article.</p>
+<p><strong>(d) Standing.</strong> A person within the class of persons whose information an unlawful program collects has standing to challenge the program. Secrecy of a program's records shall not defeat standing to challenge it.</p>
+<p><strong>(e) Systemic review.</strong> Challenges to a surveillance or collection program, as distinct from an individual search, proceed on the expedited docket of <a class="xref" href="#artIII-s5">Article III, Section 5</a>. Classified matter is examined by the court in camera with security-cleared counsel for the challengers; classification is an argument addressed to the court and never a bar to its jurisdiction.</p>
+<p><strong>(f) Transparency.</strong> Every instrumentality of government conducting surveillance shall publish annually the statistical measures of its activity — warrants sought and issued, persons targeted, and the extent of incidental collection — in a form fixed by law that identifies no lawful target.</p>
+<h2 id="artVIII-s7">Section 7. Compelled Access and Encryption</h2>
+<p><strong>(a) No compelled access.</strong> No person shall be compelled to disclose or apply the means of access to their information, whether the means is knowledge, biometry, or a thing possessed.</p>
+<p><strong>(b) No mandated weakness.</strong> No law shall require any person to weaken the security of information, to build or maintain a means of exceptional access, or to withhold from the public the means of securing information.</p>
+<p><strong>(c) Scope.</strong> Nothing in this Section limits the compelled production, under a warrant conforming to <a class="xref" href="#artVIII-s2">Section 2</a>, of information a custodian holds in accessible form.</p>
+<hr />
+<h1 id="a9">ARTICLE IX — AMENDMENT</h1>
+<h2 id="artIX-s1">Section 1. Proposal</h2>
+<p>Amendments may be proposed by the affirmative vote of sixty-five percent of both chambers of Congress, or by a convention called on the application of two-thirds of the State legislatures.</p>
+<h2 id="artIX-s2">Section 2. Ratification</h2>
+<p>An amendment is valid when ratified, within seven years of proposal, by either: three-fourths of the States, by legislature or convention as Congress directs; or by referendum of the people, upon the approval of two-thirds of all votes cast in the nation and of a majority of votes cast in at least two-thirds of the States.</p>
+<h2 id="artIX-s3">Section 3. Entrenchment</h2>
+<p>No amendment shall abolish the right to vote secured by <a class="xref" href="#artIV-s1">Article IV, Section 1</a>, nor subject any citizen's franchise to denial or abridgment on account of race, sex, or ability to pay.</p>
+<hr />
+<h1 id="a10">ARTICLE X — SUPREMACY, RATIFICATION, AND TRANSITION</h1>
+<h2 id="artX-s1">Section 1. Supremacy</h2>
+<p>This Constitution, and the laws and treaties made under it, are the supreme law of the land, binding on the judges in every State.</p>
+<h2 id="artX-s2">Section 2. Continuity of Law</h2>
+<p>All laws, treaties, and judicial precedents of the United States in force at ratification continue in force to the extent consistent with this Constitution, until amended or repealed under it.</p>
+<h2 id="artX-s3">Section 3. Transition Schedule</h2>
+<p><strong>(a)</strong> The first House elected under the apportionment of <a class="xref" href="#artI-s2">Article I, Section 2</a> shall be chosen at the first federal election following the census after ratification.</p>
+<p><strong>(b)</strong> The National Election Authority shall be constituted within one year of ratification; its uniform standards take effect for the second federal election after ratification.</p>
+<p><strong>(c)</strong> The first presidential election by ranked-choice direct vote is the first presidential election held no fewer than three years after ratification.</p>
+<p><strong>(d)</strong> Supreme Court terms are assigned under <a class="xref" href="#artIII-s2">Article III, Section 2(d)</a> upon ratification.</p>
+<p><strong>(e)</strong> The consensus threshold of <a class="xref" href="#artI-s4">Article I, Section 4</a> takes effect with the first Congress seated after ratification.</p>
+<p><strong>(f)</strong> The Weapon Harm Authority of <a class="xref" href="#artVII-s5">Article VII, Section 5</a> and the measurement authority of <a class="xref" href="#artVI-s9">Article VI, Section 9(g)</a> shall be constituted within one year of ratification; the registration period of <a class="xref" href="#artVII-s3">Article VII, Section 3(e)</a> runs from ratification.</p>
+<h2 id="artX-s4">Section 4. Ratification</h2>
+<p><strong>(a) Origin.</strong> This Constitution is proposed by a convention called under Article V of the prior Constitution, on the application of two-thirds of the legislatures of the States.</p>
+<p><strong>(b) Ratification.</strong> This Constitution shall be submitted to a referendum of the people in every State, conducted under the election law existing at the time. It takes effect when approved by a majority of all votes cast in the nation and by a majority of votes cast in each of two-thirds of the States.</p>
+<p><strong>(c) Effect among ratifying States.</strong> Upon taking effect, this Constitution binds the ratifying States and the people thereof. A State in which it is not approved may accede by subsequent referendum, and until accession is governed in its relations with the United States as the Congress shall by law provide.</p>
+<h2>---</h2>
+  </main>
+</div>
+<footer>Enrolled Text · Audited · not law</footer>
+</body>
+</html>
